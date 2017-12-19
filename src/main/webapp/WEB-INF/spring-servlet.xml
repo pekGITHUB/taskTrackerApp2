@@ -9,6 +9,8 @@
 	<!-- Specifying base package of the Components like Controller, Service, 
 		DAO -->
 	<context:component-scan base-package="com.oosdclass.taskTrackerApp2" />
+	<!-- Getting Database properties -->
+	<context:property-placeholder location="classpath:application.properties" />
 	<mvc:annotation-driven />
 
 
@@ -17,7 +19,7 @@
 		on jdbc template -->
 	<!-- So spring will inject the jdbcTemplate dependency into UserDAOImpl 
 		when required -->
-	<bean id="userDaoImpl" class="com.oosdclass.taskTrackerApp2.dao.impl.UserDAOImpl">
+	<bean id="userDAOImpl" class="com.oosdclass.taskTrackerApp2.dao.impl.UserDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 
@@ -29,9 +31,9 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	
 
-	
+
+
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
@@ -42,7 +44,7 @@
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+
 	<!-- DataSource -->
 	<!-- We are defining the data sources properties like driver name, username, 
 		URL and password -->
@@ -55,7 +57,7 @@
 		<property name="password" value="${database.password}"></property>
 	</bean>
 
-	
+
 
 
 </beans>

@@ -17,23 +17,23 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean isUserValid(User user) {
 		
-		User mockUser = userDAO.retrieveByUserName(user.getUsername());
+		User userFromDb = userDAO.retrieveByUserName(user.getUsername()); 
 		
-		if(user.getUsername().equals(mockUser.getUsername()) &&
-				user.getPassword().equals(mockUser.getPassword())) {
+		//if no user with username exists in the DB return false
+		if(userFromDb == null) {
+			return false;
+		}
+		
+		//if username/password typed in by user matches username/password from db
+		//return true
+		if(user.getUsername().equals(userFromDb.getUsername()) &&
+				user.getPassword().equals(userFromDb.getPassword())) {
 			return true;
 		}
 		else {
 			return false;	
 		}
 		
-	}
-	
-	public User mockUserDAO() {
-		User user = new User();
-		user.setUsername("admin");
-		user.setPassword("pass");
-		return user;
 	}
 
 }

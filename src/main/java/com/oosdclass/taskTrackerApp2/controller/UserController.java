@@ -42,7 +42,7 @@ public class UserController {
 			ModelAndView model = null;
 			//if user is a valid user then display view Task page
 			if(userService.isUserValid(userLoginFormObject)) {
-				model = new ModelAndView("viewTask");
+				model = new ModelAndView("redirect:/adminTasks");
 				
 			}
 			//else keep them on home page and send an error to display

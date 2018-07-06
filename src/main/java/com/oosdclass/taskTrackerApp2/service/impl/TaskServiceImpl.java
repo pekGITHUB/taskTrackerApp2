@@ -20,7 +20,13 @@ public class TaskServiceImpl implements TaskService {
 		return taskdao.retrieveAllTasks();	
 	}
 	
+	public boolean isValid(Task addTaskFormObject) {
+		return true;
+	}
 	
+	public int addANewTask(Task addTaskFormObject) {
+		return taskdao.addANewTask(addTaskFormObject);
+	}
 	
 
 }

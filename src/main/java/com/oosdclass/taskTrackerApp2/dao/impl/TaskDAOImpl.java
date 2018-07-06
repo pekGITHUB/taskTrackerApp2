@@ -55,7 +55,7 @@ private JdbcTemplate jdbcTemplate;
 	@Override
 	public Task retrieveByTaskID(int taskID) {
 		try {
-			String sql = "select * from user where taskId=?";
+			String sql = "select * from task where taskId = ?";
 			Task task = (Task) jdbcTemplate.queryForObject(sql, new Object[] { taskID }, new RowMapper<Task>() {
 				
 				@Override
@@ -74,6 +74,20 @@ private JdbcTemplate jdbcTemplate;
 		}
 	}
 
+	@Override
+	public int addANewTask(Task addTaskFormObject) {
+		try {
+			String sql = "insert into task (taskId, description, assignedTo, status) values (?, ?, ?, ?)";
+			
+			return jdbcTemplate.update(sql, new Object[] {addTaskFormObject.getTaskID(),
+					                        addTaskFormObject.getDescription(),
+					                        addTaskFormObject.getAssignedTo(),
+					                        addTaskFormObject.getStatus()});
+					                        
+		} catch (DataAccessException ex) {
+			return 0;
+		}
+	}
 	
 
 }

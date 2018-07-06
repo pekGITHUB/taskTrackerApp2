@@ -19,15 +19,17 @@
 	<div class="container">
 <!--This is button that goes to create task screen -->
 		<div class="row col-lg-6 col-md-offset-2 custyle">
-		<a href="${contextPath}/taskForm"
+		<a href="${contextPath}/addTask"
 						class="btn btn-primary btn-xs pull-right"><b>+</b> Add a new
 						task</a>
+					
 			<table class="table table-striped custab">		
 				<thead>
 					<tr>
 						<th>Task ID</th>
 						<th>Task Description</th>
 						<th>Status</th>
+						<th>        </th>
 						<th>Assigned To</th>
 					</tr>
 				</thead>
@@ -35,11 +37,21 @@
 				<c:forEach var="task" items="${taskList}">
 				<tr>
 				<td>${task.taskID}</td>
+				
 				<td>${task.description}</td>
+				
 				<td>${task.status}</td>
+				
+ <!--   		<td><a href="<c:url value='${contextPath}/workATask/${task.taskID}' />"  -->
+                <td><a href="${contextPath}/workATask" 
+    			    class="btn btn-success btn-xs btn-block">Work</a></td>	
+				   	
 				<td>${task.assignedTo}</td>
-				</tr>
-					
+				
+<!--     		<td><a href="<c:url value='${contextPath}/assignTask/${task.taskID}' />"  -->
+				<td><a href="${contextPath}/assignTask" 
+				    class="btn btn-success btn-xs btn-block">Assign</a></td>
+				</tr>				
 				</c:forEach>
 			</table>
 		</div>

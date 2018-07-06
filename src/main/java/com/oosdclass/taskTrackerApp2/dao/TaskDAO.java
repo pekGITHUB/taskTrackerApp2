@@ -9,4 +9,6 @@ public interface TaskDAO {
 	public List<Task> retrieveAllTasks();
 
 	public Task retrieveByTaskID(int taskID);
+	
+	public int addANewTask(Task addTaskFormObject);
 }

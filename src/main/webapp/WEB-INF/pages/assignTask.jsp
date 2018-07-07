@@ -62,7 +62,7 @@
 				
 								<!-- mapping description in Task pojo(object) in model package by saying path="description"  -->
 								<form:input path="taskID" type="number" class="form-control"
-									placeholder="000" readonly="readonly"  />
+									placeholder="00000" readonly="readonly"  />
 							</div>
 						</div>
 					</div>
